@@ -16,15 +16,17 @@ public class Calculator {
     }
 
     public BigDecimal getResult() throws UnknownOperatorException {
-        for (String expression : expressions) {
-            if(expression.matches("[0-9]+"))
-                stack.push(Double.parseDouble(expression));
-            else {
-                Double right = stack.pop();
-                Double left = stack.pop();
-                Double erg = computeErg(left, expression.charAt(0), right);
-                stack.push(erg);
-            }
+        Double left;
+        Double right;
+
+        for (int i = 0; i < expressions.size(); i++) {
+            if(PostFixConverter.getPrecedence(expressions.get(i).charAt(0)) > 0) {
+                left = stack.pop();
+                right = stack.pop();
+
+                stack.push(computeErg(left, expressions.get(i).charAt(0), right));
+            } else
+                stack.push(Double.valueOf(expressions.get(i)));
         }
         return BigDecimal.valueOf(stack.pop());
     }
