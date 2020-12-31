@@ -1,7 +1,5 @@
 package com.feinboeck18.calculator;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,11 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.feinboeck18.calculator.arithmeticutils.Calculator;
 import com.feinboeck18.calculator.arithmeticutils.PostFixConverter;
 import com.feinboeck18.calculator.exceptions.UnknownOperatorException;
-
-import java.math.BigDecimal;
 
 public class MainActivity extends AppCompatActivity {
 

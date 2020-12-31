@@ -20,9 +20,10 @@ public class Calculator {
         Double right;
 
         for (int i = 0; i < expressions.size(); i++) {
-            if(PostFixConverter.getPrecedence(expressions.get(i).charAt(0)) > 0) {
-                left = stack.pop();
+            String expression = expressions.get(i);
+            if(expression.equals("+") || expression.equals("-") || expression.equals("*") || expression.equals("/")) {
                 right = stack.pop();
+                left = stack.pop();
 
                 stack.push(computeErg(left, expressions.get(i).charAt(0), right));
             } else
